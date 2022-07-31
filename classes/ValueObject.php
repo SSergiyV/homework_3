@@ -1,6 +1,5 @@
 <?php
 
-
 class ValueObject {
 
     private int $red;

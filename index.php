@@ -1,12 +1,17 @@
 <?php
 
+echo "<pre>";
+
 error_reporting(-1);
 
-require_once 'classes/ValueObject.php';
-require_once 'classes/User.php';
+require_once "classes/User.php";
+require_once "classes/ValueObject.php";
+
+//use classes\{User, ValueObject};
+//require_once __DIR__ . "/vendor/autoload.php";
 
 function debug ($data) {
-    echo '<pre>' . print_r($data, 1) . '<pre>';
+    echo print_r($data, 1);
 }
 
 try {
@@ -14,16 +19,13 @@ try {
     $color_1 = new ValueObject(200, 200, 200);
     $color_2 = $color -> mix (new ValueObject(200, 200, 200));
     var_dump($color -> equals($color, $color_1));
-    echo "<br>";
+
     $rgb = ValueObject::random();
     debug($rgb);
-    echo "<br>";
+
     echo $color -> getRed();
-    echo "<br>";
     echo $color -> getGreen();
-    echo "<br>";
     echo $color -> getBlue();
-    echo "<br>";
     $user = new User(2545524, "gft@jhn.ki");
     echo $user -> getUserData();
 }
