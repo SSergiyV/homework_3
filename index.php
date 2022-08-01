@@ -14,6 +14,9 @@ function debug ($data) {
 }
 
 try {
+    $traitTest = new Test();
+    echo $traitTest -> getSum();
+
 //    $color = new ValueObject(200, 200, 200);
 //    $color_1 = new ValueObject(200, 200, 200);
 //    $color_2 = $color -> mix (new ValueObject(200, 200, 200));
@@ -28,9 +31,6 @@ try {
 //
 //    $user = new User(2545524, "gft@jhn.ki");
 //    echo $user -> getUserData();
-
-    $traitTest = new Test();
-    echo $traitTest -> getSum();
 }
 catch (Exception $exception) {
     echo $exception -> getMessage();
