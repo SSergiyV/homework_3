@@ -1,5 +1,9 @@
 <?php
 
+namespace classes;
+
+use Exception;
+
 class UserException extends Exception {}
 
 class User {

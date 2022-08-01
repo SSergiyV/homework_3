@@ -1,5 +1,7 @@
 <?php
 
+namespace classes;
+
 class ValueObject {
 
     private int $red;
