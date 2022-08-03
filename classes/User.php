@@ -4,45 +4,31 @@ namespace classes;
 
 use Exception;
 
-class UserException extends Exception {}
-
 class User {
 
-    public static int $id = 0;
-    private string $password;
+    private string $name;
+    private int $age;
     private string $email;
 
     /**
      * @throws Exception
      */
-    public function __construct($password, $email) {
-        self::$id++;
-        $this -> setPassword($password);
-        $this -> setEmail($email);
-    }
-
-    public function getUserData(): string {
-        return "<br>ID: " . self::$id . "<br><br>Email: {$this -> email}<br>";
-    }
-
-    /**
-     * @param string $password
-     * @throws Exception
-     */
-    public function setPassword(string $password): void
-    {
-        if (strlen($password) > 8) {
-            throw new Exception("<br>Invalid value<br><br>");
+    public function __call(string $name, array $arguments) {
+        if (!method_exists($this, $name)) {
+            throw new Exception("The" . $name . "method does not exist.");
         }
-        $this->password = $password;
+        call_user_func_array([$this, $name], $arguments);
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
+    private function setName($name): void {
+        $this -> name = $name;
     }
 
+    private function setAge($age): void {
+        $this -> age = $age;
+    }
+
+    public function getAll(): string {
+        return "Name: " . $this -> name . "<br>" . "Age: " . $this -> age;
+    }
 }

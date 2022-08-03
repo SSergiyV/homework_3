@@ -4,7 +4,7 @@ echo "<pre>";
 
 error_reporting(-1);
 
-use classes\{User, ValueObject, Test};
+use classes\{UserOld, ValueObject, Test, User};
 require_once __DIR__ . "/vendor/autoload.php";
 
 
@@ -14,23 +14,10 @@ function debug ($data) {
 }
 
 try {
-    $traitTest = new Test();
-    echo $traitTest -> getSum();
-
-//    $color = new ValueObject(200, 200, 200);
-//    $color_1 = new ValueObject(200, 200, 200);
-//    $color_2 = $color -> mix (new ValueObject(200, 200, 200));
-//    var_dump($color -> equals($color, $color_1));
-//
-//    $rgb = ValueObject::random();
-//    debug($rgb);
-//
-//    echo $color -> getRed() . "<br>";
-//    echo $color -> getGreen() . "<br>";
-//    echo $color -> getBlue() . "<br>";
-//
-//    $user = new User(2545524, "gft@jhn.ki");
-//    echo $user -> getUserData();
+    $user = new User();
+    $user -> setName("Nick");
+    $user -> setAge(20);
+    echo $user -> getAll();
 }
 catch (Exception $exception) {
     echo $exception -> getMessage();
