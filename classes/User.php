@@ -15,7 +15,7 @@ class User {
      */
     public function __call(string $name, array $arguments) {
         if (!method_exists($this, $name)) {
-            throw new Exception("The" . $name . "method does not exist.");
+            throw new Exception("The " . $name . " method does not exist.");
         }
         call_user_func_array([$this, $name], $arguments);
     }
