@@ -1,22 +1,21 @@
 version: "3.8"
 
-volumes:
-  postgres_volume:
-    driver: local
-
 networks:
   php_advanced:
     driver: bridge
 
 services:
   db:
-    image: postgres
+    image: mysql:8.0.30
     restart: always
     volumes:
-      - postgres_volume:/var/lib/postgresql
+      - ./tmp/db:/var/lib/mysql
     environment:
-      POSTGRES_PASSWORD: root
-    container_name: post_db
+      MYSQL_ROOT_PASSWORD: root
+    container_name: mysql_db
+    ports:
+      - 33066:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     networks:
       - php_advanced
 

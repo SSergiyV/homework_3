@@ -4,7 +4,7 @@ echo "<pre>";
 
 error_reporting(-1);
 
-use classes\{UserOld, ValueObject, Test, User};
+use classes\{UserOld, ValueObject, Test, User, Currency, Money};
 require_once __DIR__ . "/vendor/autoload.php";
 
 
@@ -14,10 +14,8 @@ function debug ($data) {
 }
 
 try {
-    $user = new User();
-    $user -> setName("Nick");
-    $user -> setAge(20);
-    echo $user -> getAll();
+    $currency = new Currency("USD");
+    echo $currency -> getIsoCode();
 }
 catch (Exception $exception) {
     echo $exception -> getMessage();
