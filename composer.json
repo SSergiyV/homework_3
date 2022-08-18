@@ -8,6 +8,7 @@
     "larapack/dd": "^1.1"
   },
   "require": {
-    "ext-http": "*"
+    "ext-http": "*",
+    "ext-pdo": "*"
   }
 }
