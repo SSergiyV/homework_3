@@ -1,22 +1,20 @@
 version: "3.8"
 
-volumes:
-  postgres_volume:
-    driver: local
-
 networks:
   php_advanced:
     driver: bridge
 
 services:
-  db:
-    image: postgres
+  mysql:
+    image: mysql:8.0.30
     restart: always
     volumes:
-      - postgres_volume:/var/lib/postgresql
+      - ./tmp/db:/var/lib/mysql
     environment:
-      POSTGRES_PASSWORD: root
-    container_name: post_db
+      MYSQL_ROOT_PASSWORD: root
+    container_name: mysql
+    ports:
+      - 33066:3306
     networks:
       - php_advanced
 
@@ -37,5 +35,6 @@ services:
       - .:/var/www/html
     ports:
       - 8081:80
+    container_name: php
     networks:
       - php_advanced
