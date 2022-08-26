@@ -4,9 +4,9 @@ namespace Single_Responsibility;
 
 class Processing
 {
-//    public function save() {}
+//    public function save(Product $product) {}
 
-//    public function update() {}
+//    public function update(Product $product) {}
 
-//    public function delete() {}
+//    public function delete(Product $product) {}
 }

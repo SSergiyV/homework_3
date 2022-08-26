@@ -4,7 +4,8 @@ echo "<pre>";
 
 error_reporting(-1);
 
-use classes\{UserOld, ValueObject, Test, User, Currency, Money};
+use http\Exception\InvalidArgumentException;
+use classes\{Logger, UserOld, ValueObject, Test, User, Currency, Money};
 require_once __DIR__ . "/vendor/autoload.php";
 require_once __DIR__ . "/db_config/db_config.php";
 
@@ -14,15 +15,11 @@ function debug ($data): void {
 }
 
 try {
-    $pdo = new PDO(DSN, DB_USER, DB_PASSWORD, DB_OPTS);
+    $money = new Money(12, new Currency("EUR"));
+    $money1 = new Money(123, new Currency("EUR"));
 
-    $query = $pdo -> prepare("SELECT * FROM cars");
+    dd($money -> add($money1));
 
-    $query -> execute();
-
-    dd($query -> fetchAll());
-
-}catch (PDOException $exception) {
+}catch (InvalidArgumentException $exception) {
     echo $exception -> getMessage();
-    dd($exception);
 }

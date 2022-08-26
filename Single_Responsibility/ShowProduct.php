@@ -4,7 +4,7 @@ namespace Single_Responsibility;
 
 class ShowProduct
 {
-//    public function show() {}
+//    public function show(Product $product) {}
 
-//    public function print() {}
+//    public function print(Product $product) {}
 }

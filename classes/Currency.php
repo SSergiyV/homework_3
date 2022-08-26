@@ -10,15 +10,12 @@ class Currency {
     const CURRENCY_NAME = array("USD", "EUR", "GBP", "CHF");
 
     public function __construct($isoCode) {
-        $this -> isoCode = $isoCode;
-        $this -> equals();
+        $this -> setIsoCode($isoCode);
+
     }
 
-    public function equals(): bool {
-        if (!in_array($this -> isoCode, self::CURRENCY_NAME)) {
-            throw new InvalidArgumentException(false);
-        }
-        return true;
+    public function equals(Currency $currency): bool {
+        return $this -> getIsoCode() == $currency -> getIsoCode();
     }
 
     /**
@@ -29,11 +26,9 @@ class Currency {
         return $this->isoCode;
     }
 
-    /**
-     * @param string $isoCode
-     */
-    public function setIsoCode(string $isoCode): void
+
+    public function setIsoCode($isoCode): void
     {
-        $this->isoCode = $isoCode;
+        if (in_array($isoCode, self::CURRENCY_NAME)) $this -> isoCode = $isoCode;
     }
 }

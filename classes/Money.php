@@ -2,18 +2,16 @@
 
 namespace classes;
 
+use http\Exception\InvalidArgumentException;
+
 class Money {
 
     private int|float $amount;
     private Currency $currency;
 
-    public function __construct($amount, $currency) {
-        $this -> amount = $amount;
-        $this -> currency = $currency;
-    }
-
-    public function equals() {
-
+    public function __construct($amount, Currency $currency) {
+        $this -> setAmount($amount);
+        $this -> setCurrency($currency);
     }
 
     /**
@@ -37,15 +35,27 @@ class Money {
      */
     public function getCurrency(): Currency
     {
-        return $this->currency;
+        return $this -> currency;
     }
 
-    /**
-     * @param Currency $currency
-     */
     public function setCurrency(Currency $currency): void
     {
         $this->currency = $currency;
+    }
+
+    public function equals(Money $money): bool {
+        return $this -> amount == $money -> amount && $this -> getCurrency() -> equals($money -> getCurrency());
+    }
+
+    /**
+     * @param Money $money
+     * @return int|float
+     */
+    public function add(Money $money):int|float {
+        if (!$this -> getCurrency() -> equals($money -> getCurrency())) {
+            throw new InvalidArgumentException('error');
+        }
+        return $this -> amount + $money -> amount;
     }
 
 }
