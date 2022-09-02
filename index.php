@@ -1,25 +1,17 @@
 <?php
-
-echo "<pre>";
-
-error_reporting(-1);
-
 use http\Exception\InvalidArgumentException;
-use classes\{Logger, UserOld, ValueObject, Test, User, Currency, Money};
+use classes\{Logger, UserOld, ValueObject, Test, User, Currency, Money,WithDateFormat,ConsoleDelivery};
 require_once __DIR__ . "/vendor/autoload.php";
 require_once __DIR__ . "/db_config/db_config.php";
+require_once "actions/action.php";
 
 
-function debug ($data): void {
-    echo print_r($data, 1);
-}
+$logger = new Logger(new WithDateFormat(), new ConsoleDelivery());
+$logger1 = new Logger(new \classes\RawFormat(), new \classes\SmsDelivery());
+$logger2 = new Logger(new \classes\WithDateAndDetailsFormat(), new \classes\EmailDelivery());
+$logger2->log("");
 
-try {
-    $money = new Money(12, new Currency("EUR"));
-    $money1 = new Money(123, new Currency("EUR"));
 
-    dd($money -> add($money1));
 
-}catch (InvalidArgumentException $exception) {
-    echo $exception -> getMessage();
-}
+
+
