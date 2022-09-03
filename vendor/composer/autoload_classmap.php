@@ -77,6 +77,7 @@ return array(
     'classes\\EmailDelivery' => $baseDir . '/classes/EmailDelivery.php',
     'classes\\Logger' => $baseDir . '/classes/Logger.php',
     'classes\\Money' => $baseDir . '/classes/Money.php',
+    'classes\\PatternCollection' => $baseDir . '/classes/PatternCollection.php',
     'classes\\RawFormat' => $baseDir . '/classes/RawFormat.php',
     'classes\\SmsDelivery' => $baseDir . '/classes/SmsDelivery.php',
     'classes\\Test' => $baseDir . '/classes/Test.php',

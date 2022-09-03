@@ -111,6 +111,7 @@ class ComposerStaticInitc87f179a6c3fe1dc8da1956d8eb5f59a
         'classes\\EmailDelivery' => __DIR__ . '/../..' . '/classes/EmailDelivery.php',
         'classes\\Logger' => __DIR__ . '/../..' . '/classes/Logger.php',
         'classes\\Money' => __DIR__ . '/../..' . '/classes/Money.php',
+        'classes\\PatternCollection' => __DIR__ . '/../..' . '/classes/PatternCollection.php',
         'classes\\RawFormat' => __DIR__ . '/../..' . '/classes/RawFormat.php',
         'classes\\SmsDelivery' => __DIR__ . '/../..' . '/classes/SmsDelivery.php',
         'classes\\Test' => __DIR__ . '/../..' . '/classes/Test.php',
